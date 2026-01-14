@@ -1,0 +1,1083 @@
+/* === GENERAL === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #095D7E;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: -350px; 
+    top: 0;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.show {
+    left: 0;
+}
+
+.sidebar .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar h2 {
+    color:whitesmoke;
+    font-size: 20px;
+    margin: 0;
+}
+
+.sidebar .toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: #ff3333;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    list-style: none;
+    padding: 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+}
+
+.sidebar ul li.active {
+    background-color: #00C7B4;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.sidebar ul li.active a {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.sidebar ul li:not(.active):hover {
+    background-color: #053b51;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.logout-section {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ff3333;
+    font: inherit;
+    transition: color 0.3s ease;
+}
+
+.logout-button:hover {
+    color: #ff1a1a;
+}
+
+.logout-button box-icon {
+    transition: color 0.3s ease;
+}
+
+.logout-button:hover box-icon {
+    color: #ff1a1a;
+}
+
+.logout-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+/* === CONTENT === */
+.content {
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
+}
+
+.content.shift {
+    margin-left: 250px;
+}
+.error-popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.error-popup.fade-out {
+    opacity: 0;
+}
+/* === TOGGLE BUTTON (KETIKA SIDEBAR DITUTUP) === */
+.toggle-btn-open {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: #095D7E;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-btn-open.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.back-button {
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #818181;
+}
+.back-button:hover {
+    color: #333;
+}
+
+.infusee-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.infusee-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.infusee-card canvas {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.heading {
+    color: #777;
+    text-align:center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header,
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.card-header .left h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.card-header .right {
+    font-size: 14px;
+    text-align: right;
+    color: #666;
+    align-items: end;
+}
+
+.divider {
+    height: 2px;
+    background-color: #00C7B4;
+    border-radius: 1px;
+    margin-top: 8px;
+}
+
+.status-icon {
+    color: #00cc44;
+    margin-left: 5px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+
+.card-footer .left {
+    font-size: 16px;
+    color: #666;
+    margin-top: -8px;
+    font-weight: bold;
+}
+
+.card-footer .right {
+    font-size: 14px;
+    color: #666;
+    margin-top: -8px;
+    text-align: right;
+}
+
+.labtime {
+font-size: 14px;
+text-align: center;
+color: #053b51;
+font-weight: bold;
+margin-top:20px;
+margin-bottom:-30px;
+}
+
+/* Style untuk timer */
+.timer {
+    font-size: 32px;
+    text-align: center;
+    color: #00C7B4; /* Warna teks hitam */
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+    margin-bottom:0px;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+canvas {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.register-container {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Judul */
+.register-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+}
+
+.divider-reg {
+    height: 2px;
+    background-color: #00C7B4;
+    border-radius: 1px;
+    margin-top: 30px;
+    margin-bottom: 30px;    
+}
+
+.error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(248, 215, 218, 0.95);
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    animation: fadeIn 0.4s ease-out;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.error-popup-content p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Optional: fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Group Form */
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* Label form */
+.register-label {
+    width: 25%;
+    font-weight: 500;
+    color: #333;
+    padding-right: 10px;
+}
+
+/* Input container */
+.register-input-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.register-input-container span {
+    margin-right: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Input */
+.register-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+    font-size: 16px;
+    color: #333;
+}
+
+.register-input:focus {
+    outline: none;
+    border-color: #00C7B4;
+    box-shadow: 0 0 5px rgba(0, 199, 180, 0.5);
+}
+
+/* Input disabled */
+.register-input-disabled {
+    background-color: #c4c4c4;
+    color: #999;
+}
+
+/* Tombol Cari */
+.register-btn-search {
+    background-color: #00C7B4;
+    color: #fff;    
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-left: 10px;
+}
+
+.register-btn-search:hover {
+    background-color: #009688;
+}
+
+/* Tombol Submit */
+.register-btn-submit {
+    background-color: #00C7B4;
+    color: #fff;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 20px;
+}
+
+.register-btn-submit:hover {
+    background-color: #009688;
+}
+
+.sidebar svg {
+    position: relative;
+    top: 3px;
+    margin-right: 8px;
+}
+
+
+.device-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.device-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.device-card {
+    background-color: #00c7b4;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #00c7b4;
+}
+
+.device-card:hover {
+    background-color: #14967F;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.device-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: inherit;
+    text-align: center;
+}
+
+.device-info p {
+    font-size: 14px;
+    color: inherit;
+    text-align: center;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #999;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.row .col-md-5{
+    background-color: white;
+    margin-top: -40px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 0 0 35px 35px;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.1);
+}
+
+.device .register-label {
+    display: block;
+    font-weight: bold;
+    color: #666666;
+}
+
+.device .register-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.device .register-text {
+    color: #666666;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.device .register-input-container span {
+    color: #666666;
+    font-size: 16px;
+}
+
+.clear-patient-wrapper-left {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon-button:hover {
+    transform: scale(1.1);
+}
+
+.icon-button svg {
+    fill: #dc3545;
+    transition: fill 0.3s ease;
+}
+
+.icon-button:hover svg {
+    fill: #a71d2a;
+}
+@keyframes pulse-alert {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.alert-persen {
+    font-size: 10px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #dc3545; /* Merah */
+    border: 1px solid #dc3545;
+    animation: pulse-alert 1.5s infinite;
+}
+
+.end-session-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    padding: 11px;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 6px;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.end-session-btn:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+}
+
+
+/* Styling untuk overlay */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.confirm-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Styling untuk popup */
+.confirm-popup {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.confirm-overlay.active .confirm-popup {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Judul pop-up */
+.confirm-popup h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* Tombol dalam popup */
+.confirm-popup .popup-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 8px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Tombol Konfirmasi */
+.confirm-popup .confirm-btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+}
+
+.confirm-popup .confirm-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Tombol Batal */
+.confirm-popup .cancel-btn {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+}
+
+.confirm-popup .cancel-btn:hover {
+    background-color: #cfcfcf;
+}
+
+.activity-container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.activity-title {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-container form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    padding: 6px 12px;
+    border: none;
+    background-color: #00c7b4;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #14967F;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.activity-th {
+    background-color: #e6e6e6;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.activity-td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sort-button {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.sort-button:hover {
+    color: #333;
+}
+
+.activity-header-row th {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.activity-data-row td {
+    font-size: 13px;
+    padding: 8px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    padding: 8px 12px;
+    color: #00c7b4;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #00c7b4;
+    color: #fff;
+}
+
+.pagination .active .page-link {
+    background-color: #00c7b4;
+    border-color: #00c7b4;
+    color: white;
+}
+
+.pagination .disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.custom-pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination-list {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination-list li {
+    margin: 0 5px;
+}
+
+.pagination-list li a,
+.pagination-list li span {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #00c7b4;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.pagination-list li a:hover {
+    background-color: #00c7b4;
+    color: #fff;
+}
+
+.pagination-list li.active span {
+    background-color: #00c7b4;
+    color: white;
+    border-color: #00c7b4;
+}
+
+.pagination-list li.disabled span {
+    color: #999;
+    pointer-events: none;
+    background-color: #eee;
+}
+
+.start-activity {
+    color:  #28a745;
+}
+
+.end-activity {
+    color: #dc3545;
+}
+
+
+@media (max-width: 768px) {
+    .activity-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .search-container form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-container input,
+    .search-container button {
+        width: 100%;
+    }
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 12px 16px;
+    color: #fff;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05); /* opsional */
+}
+
+.user-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.greeting {
+    font-size: 14px;
+    font-weight: 400;
+    color: #ccc;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+}
+
+/* Container Utama */
+.ep-wrapper {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #334155;
+}
+
+.ep-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+    border-left: 5px solid #00c7b4;
+    padding-left: 15px;
+}
+
+/* Card Form Tambah */
+.ep-card-form {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+}
+
+.ep-form-inline {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Styling Input & Select */
+.ep-select, .ep-input {
+    padding: 0.6rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.ep-input:focus, .ep-select:focus {
+    border-color: #00c7b4;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Styling Tombol */
+.ep-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ep-btn-add { background: #00c7b4; color: white; }
+.ep-btn-add:hover { background: #00c7b4; }
+
+.ep-btn-update { background: #10b981; color: white; }
+.ep-btn-update:hover { background: #059669; }
+
+.ep-btn-delete { background: #ef4444; color: white; }
+.ep-btn-delete:hover { background: #dc2626; }
+
+/* Styling Tabel */
+/* Memberikan jarak horizontal antar kolom lebih luas */
+.ep-table td {
+    padding: 1rem 1.2rem; /* 1rem vertikal, 1.2rem horizontal */
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Mengatur agar input tidak benar-benar menempel ke garis tepi sel */
+.ep-table td .ep-input {
+    width: 100%;
+    box-sizing: border-box; /* Memastikan padding tidak merusak lebar */
+    display: block;
+}
+
+/* Menambahkan sedikit spasi antar baris di dalam tabel */
+.ep-table tbody tr {
+    transition: background 0.2s;
+}
+
+.ep-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Penyesuaian khusus untuk kolom aksi agar tombol tidak berhimpitan */
+.action-gap {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+/* Badge untuk Service */
+.service-badge {
+    display: inline-block; /* Penting agar bisa ditengah oleh text-align */
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bolder;
+    background: #e0f2fe;
+    color: #00c7b4; /* Warna cyan sesuai request Anda */
+    text-align: center;
+    min-width: 50px; /* Menjaga lebar badge tetap konsisten */
+}
+
+/* Memastikan kolom "Service" (kolom pertama) rata tengah */
+.ep-table th:first-child, 
+.ep-table td:first-child {
+    text-align: center;
+}
+/* Checkbox Modern */
+.ep-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #00c7b4;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .ep-form-inline { flex-direction: column; align-items: stretch; }
+}
