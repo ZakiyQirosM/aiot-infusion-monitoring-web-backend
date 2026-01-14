@@ -1,8 +1,6 @@
-# Infusee-AIoT Website Module
+# Backend-AIoT Website Module
 
 ## 📌 Overview
-is a web-based system built using Laravel to manage, monitor, and display data from IoT (Infusee) devices integrated with Machine Learning. This module is part of the Infusee-AIoT ecosystem, designed for real-time infusion monitoring in medical environments.
-
 This repository focuses **only** on the web interface & backend API (Laravel).  
 For IoT and ML modules, see:
 - [Infusee-AIOT IoT Module]()
